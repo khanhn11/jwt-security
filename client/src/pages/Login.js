@@ -1,9 +1,12 @@
 import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "../styles/login.css";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -13,9 +16,23 @@ const Login = () => {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // TODO: Implement login logic here
+
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/api/auth/login",
+        {
+          email: username,
+          password,
+        }
+      );
+      const token = response.data;
+      localStorage.setItem("token", token);
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -41,9 +58,7 @@ const Login = () => {
           />
         </div>
         <div className="login_button">
-          <button  type="submit">
-            Submit
-          </button>
+          <button type="submit">Submit</button>
         </div>
       </form>
     </div>

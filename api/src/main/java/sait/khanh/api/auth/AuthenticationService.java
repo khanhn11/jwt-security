@@ -21,6 +21,7 @@ public class AuthenticationService {
         private final AuthenticationManager authenticationManager;
 
         /**
+         * create new user
          * 
          * @param request
          * @return
@@ -41,6 +42,7 @@ public class AuthenticationService {
         }
 
         /**
+         * authenticate user
          * 
          * @param request
          * @return
