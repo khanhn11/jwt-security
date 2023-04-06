@@ -11,12 +11,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Service;
 
 /**
  * JWT Validation Service
  * 
  * @author Khanh Nguyen
  */
+@Service
 public class JwtService {
 
     private static final String SECRET_KEY = "792F413F4428472B4B6250655368566D597133743677397A244326452948404D";
@@ -89,11 +91,11 @@ public class JwtService {
      * @return
      */
     public String generateToken(
-            Map<String, Object> extractClaims,
+            Map<String, Object> extraClaims,
             UserDetails userDetails) {
         return Jwts
                 .builder()
-                .setClaims(extractClaims)
+                .setClaims(extraClaims)
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
