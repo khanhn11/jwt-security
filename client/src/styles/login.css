@@ -25,9 +25,15 @@ body {
     padding: 10px;
 }
 
+input {
+    width: 90%;
+    margin-top: 5px;
+    margin-left:  1px;
+}
+
 button {
     border: none;
-    background: #ff7a59;
+    background: #59afff;
     color: #fff;
     padding: 10px;
     font-size: 16px;
@@ -38,7 +44,6 @@ button {
 }
 
 button:hover {
-    color: #ff7a59;
-    border: #ff7a59 solid 1px;
+    color: #59afff;
     background: #fff;
 }

@@ -34,9 +34,8 @@ public class ApplicationConfig {
     /**
      * data access object responsible for fetching user details and encode user
      * password
-     * o
      * 
-     * @returnp
+     * @return
      */
     @Bean
     public AuthenticationProvider authenticationProvider() {
